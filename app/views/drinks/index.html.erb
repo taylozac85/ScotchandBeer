@@ -1,0 +1,25 @@
+<p>Search</p>
+
+<p><%= link_to "Write review", "/writereviews" %></p>
+<!--CURRENT USER-->
+
+<p>Log in</p>
+
+<p><%= link_to "My Journal", "/users/1" %></p> 
+<!--CURRENT USER-->
+
+<table border="1">
+	<tr>
+		<th>Name</th>
+		<th>Rating</th>
+		<th>Description</th>
+	</tr>	
+	
+	<% @drinks.each do |drink| %>
+		<tr>
+			<td><%= link_to drink.drink_name, "/reviews/#{drink.id}" %></td> <!--CURRENT USER-->
+			<td><%= drink.average_rating %></td>
+			<td><%= drink.description %></td>
+		</tr>
+	<% end %>
+</table>

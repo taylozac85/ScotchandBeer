@@ -1,0 +1,21 @@
+<h1><%= @drink.drink_name %></h1>
+
+<p><%= @drink.description %></p>
+<p>Average Rating: <%= @drink.average_rating %></p>
+
+<table border="1">
+	<tr>
+		<th>Reviewed</th>
+		<th>Rating</th>
+		<th>Review</th>
+	</tr>
+
+	<% @drink.reviews.each do |review| %> <!--REFACTOR-->
+	<% @user = User.find(review.user_id) %>
+	<tr>
+		<td><%= review.review_date %> <br><%= link_to @user.user_name, "/users/#{@user.id}" %></br></td>
+		<td><%= review.rating %></td>
+		<td><%= review.review %></td>
+	</tr>
+	<% end %>
+</table>
